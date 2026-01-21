@@ -1,0 +1,116 @@
+{
+    "nav": {
+        "about": "关于我们",
+        "collection": "精选系列",
+        "services": "专业服务",
+        "contact": "联系我们",
+        "phone": "+60 14-277 0968"
+    },
+    "hero": {
+        "intro": "CRAFTED FOR VISION",
+        "precision_1": "精密工艺",
+        "precision_2": "PRECISION",
+        "material": "18K 金属镀层",
+        "transition": "为你而来",
+        "brand_1": "OPTIK IMEJ",
+        "brand_2": "看见 · 非凡",
+        "scroll": "滚动",
+        "loading": "加载中"
+    },
+    "about": {
+        "title": "匠心 · 专注",
+        "text": "始于1997年，Optik Imej 深耕 Batu Pahat 社区，近三十年来始终致力于守护您的视力健康。从创立之初至2026年的今天，我们见证了无数清晰视野的诞生。坚持将传统配镜工艺与现代光学科技完美融合。",
+        "subtext": "我们相信，眼镜不仅是矫正视力的工具，更是个人风格的延伸。Optik Imej 为您提供最专业的验光服务与精选的全球时尚镜框，以诚信与专业服务历代顾客。"
+    },
+    "collection": {
+        "label": "精选系列",
+        "title": "探索 · 风格",
+        "subtitle": "Ray-Ban 等全球品牌订购服务",
+        "classic": "经典系列",
+        "classic_desc": "永恒优雅",
+        "sport": "运动系列",
+        "sport_desc": "轻盈耐久",
+        "business": "商务系列",
+        "business_desc": "专业自信",
+        "fashion": "时尚系列",
+        "fashion_desc": "潮流前沿"
+    },
+    "services": {
+        "title": "专业 · 服务",
+        "subtitle": "全面视力护理解决方案",
+        "exam_title": "精准验光",
+        "exam_desc": "采用先进设备进行全面视力检查与眼睛健康评估。",
+        "lenses_title": "功能镜片",
+        "lenses_desc": "蓝光阻隔、自动变色、夜间防眩光、渐进多焦等多种选择。",
+        "myopia_title": "近视控制",
+        "myopia_desc": "专为儿童与青少年设计的科学近视管理方案。",
+        "brands_title": "全球代购",
+        "brands_desc": "无论是 Ray-Ban 还是其他特定品牌，我们皆可为您订购。",
+        "warranty_title": "一年保修",
+        "warranty_desc": "所有眼镜享一年保修服务（人为损坏除外），让您无后顾之忧。",
+        "fast_title": "快速取镜",
+        "fast_desc": "常见度数和镜片最快2小时内即可完成，特殊镜片视情况而定。",
+        "learn_more": "了解更多"
+    },
+    "whyus": {
+        "label": "信赖之选",
+        "title": "为何选择我们？",
+        "text": "自1997年在 Parit Sulong 创立以来，Optik Imej 以真诚服务赢得了三代顾客的信任。我们不仅提供眼镜，更提供专业的视力解决方案和持久的售后关怀。",
+        "years": "年经验",
+        "years_desc": "始于1997",
+        "generations": "代顾客",
+        "generations_desc": "世代传承",
+        "satisfaction": "满意度",
+        "satisfaction_desc": "客户好评",
+        "image_caption": "专业 · 值得信赖"
+    },
+    "testimonials": {
+        "label": "顾客评价",
+        "title": "他们怎么说",
+        "person1_name": "林先生",
+        "person1_role": "教师，Batu Pahat",
+        "person1_quote": "在 Optik Imej 配镜多年，服务专业且细心，每次验光都非常仔细。推荐给所有需要配镜的朋友！",
+        "person2_name": "陈女士",
+        "person2_role": "会计，Parit Sulong",
+        "person2_quote": "孩子的近视控制镜片就是在这里配的，效果很好，度数增长明显变慢了。非常感谢！",
+        "person3_name": "阿末先生",
+        "person3_role": "企业主，Yong Peng",
+        "person3_quote": "需要一副特别的镜框，他们帮我订购回来，服务态度非常好。下次还会再来！"
+    },
+    "faq": {
+        "label": "常见问题",
+        "title": "您可能想知道",
+        "q1": "验光需要预约吗？",
+        "a1": "无需预约，欢迎在营业时间内直接光临。我们建议在非高峰时段（如工作日上午）前来，可享受更充裕的验光时间。",
+        "q2": "配镜需要多长时间？",
+        "a2": "常见度数和普通镜片最快2小时内即可完成取镜。特殊镜片（如渐进多焦、变色镜片）需要根据实际情况确定完成时间。",
+        "q3": "眼镜有保修吗？",
+        "a3": "所有眼镜享一年保修服务，涵盖镜框和镜片的正常使用问题。人为损坏不在保修范围内。",
+        "q4": "你们接受哪些付款方式？",
+        "a4": "我们接受现金、各大银行信用卡/借记卡、以及电子钱包（如 Touch n Go eWallet）。"
+    },
+    "cta": {
+        "label": "预约服务",
+        "title": "开启您的视觉之旅",
+        "subtitle": "预约免费验光服务，体验非凡视觉",
+        "button": "立即预约"
+    },
+    "footer": {
+        "desc": "位于马来西亚柔佛 Batu Pahat (Parit Sulong)。自1997年以来，致力于为您提供最优质的眼镜与验光服务。",
+        "nav_title": "导航",
+        "contact_title": "联系方式",
+        "hours_title": "营业时间",
+        "address": "Jalan Kedidi 3, Kampung Baharu, 83500 Parit Sulong, Johor",
+        "email": "ethankhoo05@gmail.com",
+        "rights": "© 2026 Optik Imej. 保留所有权利。",
+        "hours": {
+            "mon": "周一: 10:00 - 17:30",
+            "tue": "周二: 10:00 - 17:30",
+            "wed": "周三: 10:00 - 17:30",
+            "thu": "周四: 10:00 - 17:30",
+            "fri": "周五: 休息",
+            "sat": "周六: 14:00 - 18:00",
+            "sun": "周日: 10:00 - 17:30"
+        }
+    }
+}
