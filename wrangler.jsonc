@@ -1,8 +1,0 @@
-{
-    // Cloudflare Pages Configuration
-    // Project: Optik Imej Website
-    "$schema": "https://json.schemastore.org/wrangler.json",
-    "name": "optik-imej",
-    "compatibility_date": "2024-01-01",
-    "pages_build_output_dir": "./dist"
-}
