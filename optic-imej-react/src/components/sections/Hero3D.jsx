@@ -223,7 +223,23 @@ const Hero3D = () => {
             const iw = img.naturalWidth;
             const ih = img.naturalHeight;
 
-            const scale = Math.max(cw / iw, ch / ih);
+            // Intelligent Scaling Logic
+            const isMobile = cw < 768; // Mobile breakpoint
+            const widthRatio = cw / iw;
+            const heightRatio = ch / ih;
+
+            let scale;
+
+            if (isMobile && heightRatio > widthRatio) {
+                // Mobile Portrait case: Height ratio is usually much larger than width ratio (zoomed in)
+                // We relax the cover constraint to show more of the image (less cropping)
+                // The factor 0.75 ensures it's not "too small" but significantly reduces side cropping
+                scale = Math.max(widthRatio, heightRatio * 0.75);
+            } else {
+                // Desktop or Landscape: Standard cover
+                scale = Math.max(widthRatio, heightRatio);
+            }
+
             const nw = iw * scale;
             const nh = ih * scale;
             const cx = (cw - nw) / 2;

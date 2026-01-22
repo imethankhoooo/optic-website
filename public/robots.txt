@@ -1,0 +1,32 @@
+User-agent: *
+Allow: /
+
+# Disallow development and build files
+Disallow: /node_modules/
+Disallow: /.git/
+Disallow: /src/
+
+# Sitemap location
+Sitemap: https://optic.muke.name/sitemap.xml
+
+# AI crawlers welcome
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+User-agent: Anthropic-AI
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Cohere-ai
+Allow: /

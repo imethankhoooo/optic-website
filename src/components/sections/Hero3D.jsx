@@ -167,31 +167,95 @@ const Hero3D = () => {
         }
     ], [t]);
 
-    // Preload images
+    // 检测网络速度
+    const getNetworkSpeed = () => {
+        const connection = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
+        if (connection) {
+            // effectiveType: 'slow-2g', '2g', '3g', '4g'
+            // downlink: 下行速度 Mbps
+            const isFast = connection.effectiveType === '4g' || connection.downlink > 5;
+            return isFast ? 'fast' : 'slow';
+        }
+        // 默认假设网速一般
+        return 'medium';
+    };
+
+    // Progressive image loading
     useEffect(() => {
         const loadImages = async () => {
-            const loadedImages = [];
-
             try {
                 const response = await fetch('/frames/frames.json');
                 if (!response.ok) throw new Error("Manifest not found");
-                const fileList = await response.json();
-                const totalImages = fileList.length;
+                const webpFileList = await response.json();
+                const totalImages = webpFileList.length;
 
-                let loadedCount = 0;
-                fileList.forEach((filename, i) => {
-                    const img = new Image();
-                    img.src = `/frames/${filename}`;
-                    img.onload = () => {
-                        loadedCount++;
-                        setLoadProgress(Math.round((loadedCount / totalImages) * 100));
-                        if (loadedCount === totalImages) {
-                            setTimeout(() => setIsLoaded(true), 300);
-                        }
-                    };
-                    loadedImages[i] = img;
-                });
-                setImages(loadedImages);
+                const networkSpeed = getNetworkSpeed();
+                console.log(`[Hero3D] Network speed detected: ${networkSpeed}`);
+
+                // 生成对应的 PNG 高清文件名
+                const pngFileList = webpFileList.map(filename =>
+                    filename.replace('.webp', '.png')
+                );
+
+                // 初始化图片数组
+                const loadedImages = new Array(totalImages).fill(null);
+                const hqImages = new Array(totalImages).fill(null);
+                let lqLoadedCount = 0;
+                let hqLoadedCount = 0;
+
+                // 如果网速快，直接加载高清 PNG
+                if (networkSpeed === 'fast') {
+                    console.log('[Hero3D] Fast network - loading HQ PNG directly');
+                    pngFileList.forEach((filename, i) => {
+                        const img = new Image();
+                        img.src = `/frames/hq/${filename}`;
+                        img.onload = () => {
+                            loadedImages[i] = img;
+                            lqLoadedCount++;
+                            setLoadProgress(Math.round((lqLoadedCount / totalImages) * 100));
+                            setImages([...loadedImages]);
+                            if (lqLoadedCount === totalImages) {
+                                setTimeout(() => setIsLoaded(true), 300);
+                            }
+                        };
+                    });
+                } else {
+                    // 网速慢：先加载 WebP，再后台加载 PNG
+                    console.log('[Hero3D] Slow network - loading LQ WebP first, then HQ PNG');
+
+                    // Step 1: 快速加载 WebP
+                    webpFileList.forEach((filename, i) => {
+                        const img = new Image();
+                        img.src = `/frames/${filename}`;
+                        img.onload = () => {
+                            loadedImages[i] = img;
+                            lqLoadedCount++;
+                            setLoadProgress(Math.round((lqLoadedCount / totalImages) * 100));
+                            setImages([...loadedImages]);
+                            if (lqLoadedCount === totalImages) {
+                                setTimeout(() => setIsLoaded(true), 300);
+
+                                // Step 2: 后台加载高清 PNG
+                                console.log('[Hero3D] WebP loaded, starting HQ PNG background loading...');
+                                pngFileList.forEach((pngFilename, j) => {
+                                    const hqImg = new Image();
+                                    hqImg.src = `/frames/hq/${pngFilename}`;
+                                    hqImg.onload = () => {
+                                        hqImages[j] = hqImg;
+                                        hqLoadedCount++;
+                                        // 替换为高清图片
+                                        loadedImages[j] = hqImg;
+                                        setImages([...loadedImages]);
+
+                                        if (hqLoadedCount === totalImages) {
+                                            console.log('[Hero3D] All HQ PNG loaded and replaced!');
+                                        }
+                                    };
+                                });
+                            }
+                        };
+                    });
+                }
             } catch (e) {
                 console.error("Failed to load frames manifest", e);
             }
@@ -223,7 +287,23 @@ const Hero3D = () => {
             const iw = img.naturalWidth;
             const ih = img.naturalHeight;
 
-            const scale = Math.max(cw / iw, ch / ih);
+            // Intelligent Scaling Logic
+            const isMobile = cw < 768; // Mobile breakpoint
+            const widthRatio = cw / iw;
+            const heightRatio = ch / ih;
+
+            let scale;
+
+            if (isMobile && heightRatio > widthRatio) {
+                // Mobile Portrait case: Height ratio is usually much larger than width ratio (zoomed in)
+                // We relax the cover constraint to show more of the image (less cropping)
+                // The factor 0.75 ensures it's not "too small" but significantly reduces side cropping
+                scale = Math.max(widthRatio, heightRatio * 0.75);
+            } else {
+                // Desktop or Landscape: Standard cover
+                scale = Math.max(widthRatio, heightRatio);
+            }
+
             const nw = iw * scale;
             const nh = ih * scale;
             const cx = (cw - nw) / 2;
