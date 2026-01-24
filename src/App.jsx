@@ -1,7 +1,7 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { ReactLenis } from 'lenis/react';
-import Hero3D from './components/sections/Hero3D';
+import HeroPremium from './components/sections/HeroPremium';
 import IntroSection from './components/sections/IntroSection';
 import ServicesSection from './components/sections/ServicesSection';
 import WhyUsSection from './components/sections/WhyUsSection';
@@ -19,7 +19,7 @@ function App() {
         <Navbar />
 
         <main>
-          <Hero3D />
+          <HeroPremium />
 
           {/* About */}
           <section id="about">
